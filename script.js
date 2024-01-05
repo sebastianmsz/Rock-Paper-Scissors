@@ -4,7 +4,7 @@ function getComputerChoice () {
         case 1:
             return 'rock';    
         case 2:
-            return 'raper';
+            return 'paper';
         case 3:
             return 'scissors';
     }
@@ -14,7 +14,8 @@ function getUserChoice () {
     let userChoice = prompt('Choose rock, paper or scissors');
     userChoice = String(userChoice);
     userChoice = userChoice.toLowerCase();
-    while (userChoice !== 'rock' && userChoice !== 'paper' && userChoice !== 'scissors') {
+    while (userChoice !== 'rock' && userChoice !== 'paper' && 
+    userChoice !== 'scissors') {
         alert('Thats not a valid option');
         userChoice = prompt('Choose rock, paper or scissors');
     }
@@ -53,9 +54,14 @@ function playRound (){
 function game() {
     let computerScore = 0;
     let userScore = 0;
+    let ties = 0;
     for (let i = 1 ; i <= 5 ; i++){
         let winner = playRound();
         switch (winner){
+            case 'WinScissorsPaper':
+                alert('You Win! Scissors beats Paper');
+                userScore += 1;
+                break;
             case 'LosePaperRock':
                 alert('You lose! Paper beats Rock');
                 computerScore += 1;
@@ -73,25 +79,24 @@ function game() {
                 userScore += 1;
                 break;
             case 'LoseRockScissors':
-                alert('You lose! Paper beats Rock');
+                alert('You lose! Rock beats Scissors');
                 computerScore += 1;
-                break;
-            case 'WinScissorsPaper':
-                alert('You Win! Scissors beats Paper');
-                userScore += 1;
                 break;
             case 'tie':
                 alert('Its a Tie!');
+                ties += 1;
                 break;
         }
     }
 
     if (userScore>computerScore){
-        let result= (alert(`You Win!! The score is You=${userScore}  The Computer=${computerScore}`));
+        let result= (alert(`You Win!!\nThe score:\nYou: ${userScore
+        } The Computer: ${computerScore} Ties: ${ties}`));
     } else if (userScore<computerScore) {
-        let result= (alert(`You Lose!! The score is You=${userScore} The Computer=${computerScore}`));
-        } else {let result= (alert(`Its a tie!! The score is You=${userScore} The Computer=${computerScore}`));
-    }
+        let result= (alert(`You Lose!!\nThe score:\nYou: ${userScore
+        } The Computer: ${computerScore} Ties: ${ties}`));
+    } else {result= (alert(`Its a Tie!!\nThe score:\nYou: ${userScore
+    } The Computer: ${computerScore} Ties: ${ties}`));}
     return(alert(result));
     }
 
