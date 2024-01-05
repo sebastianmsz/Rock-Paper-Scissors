@@ -28,27 +28,71 @@ function playRound (){
 
     if (userChoice == 'rock'){
         if (ComputerChoice == 'rock'){
-            winner = 'Its a tie!';
+            winner = 'tie';
         } else if (ComputerChoice == 'paper'){
-            winner = 'You Lose! Paper beats Rock';
-            }else {winner = 'You Win! Rock beats Scissors';}
+            winner = 'LosePaperRock';
+            }else {winner = 'WinRockScissors';}
 
     } else if (userChoice == 'paper'){
         if (ComputerChoice == 'paper'){
-            winner = 'Its a tie!';
+            winner = 'tie';
         } else if (ComputerChoice == 'scissors'){
-            winner = 'You Lose! Scissors beats Paper';
-        }else {winner = 'You Win! Paper beats Rock';}
+            winner = 'LoseScissorsPaper';
+        }else {winner = 'WinPaperRock';}
 
     } else if (userChoice == 'scissors'){
         if (ComputerChoice == 'scissors'){
-            winner = 'Its a tie!';
+            winner = 'tie';
         } else if (ComputerChoice == 'rock'){
-            winner = 'You Lose! Rock beats Scissors';
-        } else {winner = 'You Win! Scissors beats PaperZ';}
+            winner = 'LoseRockScissors';
+        } else {winner = 'WinScissorsPaper';}
     }
     return winner;
     }
 
-//test
-alert(playRound());
+function game() {
+    let computerScore = 0;
+    let userScore = 0;
+    for (let i = 1 ; i <= 5 ; i++){
+        let winner = playRound();
+        switch (winner){
+            case 'LosePaperRock':
+                alert('You lose! Paper beats Rock');
+                computerScore += 1;
+                break;
+            case 'WinRockScissors':
+                alert('You Win! Rock beats Scissors');
+                userScore += 1;
+                break;
+            case 'LoseScissorsPaper':
+                alert('You lose! Scissors beats Paper');
+                computerScore += 1;
+                break;
+            case 'WinPaperRock':
+                alert('You Win! Paper beats Rock');
+                userScore += 1;
+                break;
+            case 'LoseRockScissors':
+                alert('You lose! Paper beats Rock');
+                computerScore += 1;
+                break;
+            case 'WinScissorsPaper':
+                alert('You Win! Scissors beats Paper');
+                userScore += 1;
+                break;
+            case 'tie':
+                alert('Its a Tie!');
+                break;
+        }
+    }
+
+    if (userScore>computerScore){
+        let result= (alert(`You Win!! The score is You=${userScore}  The Computer=${computerScore}`));
+    } else if (userScore<computerScore) {
+        let result= (alert(`You Lose!! The score is You=${userScore} The Computer=${computerScore}`));
+        } else {let result= (alert(`Its a tie!! The score is You=${userScore} The Computer=${computerScore}`));
+    }
+    return(alert(result));
+    }
+
+alert(game());
