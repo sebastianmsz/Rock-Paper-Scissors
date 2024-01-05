@@ -21,6 +21,34 @@ function getUserChoice () {
     return userChoice;
 }
 
-//test
-alert (`Computer:${getComputerChoice()} User:${getUserChoice()}`);
+function playRound (){
+    let userChoice = getUserChoice();
+    let ComputerChoice = getComputerChoice();
+    let winner='';
 
+    if (userChoice == 'rock'){
+        if (ComputerChoice == 'rock'){
+            winner = 'Its a tie!';
+        } else if (ComputerChoice == 'paper'){
+            winner = 'You Lose! Paper beats Rock';
+            }else {winner = 'You Win! Rock beats Scissors';}
+
+    } else if (userChoice == 'paper'){
+        if (ComputerChoice == 'paper'){
+            winner = 'Its a tie!';
+        } else if (ComputerChoice == 'scissors'){
+            winner = 'You Lose! Scissors beats Paper';
+        }else {winner = 'You Win! Paper beats Rock';}
+
+    } else if (userChoice == 'scissors'){
+        if (ComputerChoice == 'scissors'){
+            winner = 'Its a tie!';
+        } else if (ComputerChoice == 'rock'){
+            winner = 'You Lose! Rock beats Scissors';
+        } else {winner = 'You Win! Scissors beats PaperZ';}
+    }
+    return winner;
+    }
+
+//test
+alert(playRound());
