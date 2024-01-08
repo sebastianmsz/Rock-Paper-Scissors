@@ -99,5 +99,3 @@ function game() {
     } The Computer: ${computerScore} Ties: ${ties}`));}
     return(alert(result));
     }
-
-alert(game());

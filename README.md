@@ -33,7 +33,7 @@ JavaScript forms the core of the project, handling the game logic and user inter
 3. Explore the code in the repository to understand how the page has been structured and designed.
 
 ### Or... just visit the page
-[Rock-Paper-Scissors game webpage](https://github.com/sebastianmsz/rock-paper-scissors)
+[Rock-Paper-Scissors game webpage](https://sebastianmsz.github.io/Rock-Paper-Scissors/)
 
 
 ## Contributions
