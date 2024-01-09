@@ -37,7 +37,7 @@ JavaScript forms the core of the project, handling the game logic and user inter
 
 
 ## Contributions
-If you're also following The Odin Project curriculum or have suggestions to improve this practice project, I'd be happy to hear them! Open an issue or submit a pull request to share your ideas.
+If you're also following The Odin Project curriculum or have suggestions to improve this project, I'd be happy to hear them! Open an issue or submit a pull request to share your ideas.
 
 ## Contact
 If you have questions about the project, The Odin Project curriculum, or just want to exchange ideas about web development, feel free to get in touch. You can reach me at sevas.molina2004@gmail.com
