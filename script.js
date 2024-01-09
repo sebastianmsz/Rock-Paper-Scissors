@@ -1,7 +1,46 @@
+const rockBtn = document.querySelector('#rockBtn');
+const paperBtn = document.querySelector('#paperBtn');
+const scissorsBtn = document.querySelector('#scissorsBtn');
+
+const userSelectionImg = document.querySelector('#userSelectionImg');
+const computerSelectionImg = document.querySelector('#computerSelectionImg');
+
+const winnerMessage = document.querySelector('#winnerMessage')
+const winnerSelectionMessage =document.querySelector('#winnerSelectionMessage')
+
+const userScoreText =document.querySelector('#userScoreText')
+const computerScoreText = document.querySelector('#computerScoreText')
+
+let computerScore = 0;
+let userScore = 0;
+
+rockBtn.addEventListener('click', () =>{
+    game('rock');
+});
+paperBtn.addEventListener('click', () =>{
+    game('paper');
+});
+scissorsBtn.addEventListener('click', () =>{
+    game('scissors');
+});
+
+function setDefaultUi() {
+    userScore = 0;
+    computerScore = 0;
+    ties = 0;
+    userScoreText.textContent = userScore;
+    computerScoreText.textContent = computerScore;
+    winnerMessage.textContent = 'First to score 5 points wins the game';
+    winnerSelectionMessage.textContent = 'Choose your weapon';
+    userSelectionImg.src = `img/question.png`;
+    computerSelectionImg.src = `img/question.png`;
+}
+
 function getComputerChoice () {
     let num = Math.floor(Math.random() * 3) + 1;
     switch (num) {
         case 1:
+
             return 'rock';    
         case 2:
             return 'paper';
@@ -10,92 +49,105 @@ function getComputerChoice () {
     }
 }
 
-function getUserChoice () {
-    let userChoice = prompt('Choose rock, paper or scissors');
-    userChoice = String(userChoice);
-    userChoice = userChoice.toLowerCase();
-    while (userChoice !== 'rock' && userChoice !== 'paper' && 
-    userChoice !== 'scissors') {
-        alert('Thats not a valid option');
-        userChoice = prompt('Choose rock, paper or scissors');
-    }
-    return userChoice;
-}
-
-function playRound (){
-    let userChoice = getUserChoice();
+function playRound (userChoice){
     let ComputerChoice = getComputerChoice();
     let winner='';
 
+    userSelectionImg.src = `img/${userChoice}.png`;
+    computerSelectionImg.src = `img/${ComputerChoice}.png`;
+
     if (userChoice == 'rock'){
         if (ComputerChoice == 'rock'){
+            winnerMessage.textContent = 'Its a Tie';
+            winnerSelectionMessage.textContent = 'Rock ties with Rock';
             winner = 'tie';
         } else if (ComputerChoice == 'paper'){
+            winnerMessage.textContent = 'You lost!';
+            winnerSelectionMessage.textContent = 'Paper beats Rock';
             winner = 'LosePaperRock';
-            }else {winner = 'WinRockScissors';}
+            }else {
+                winnerMessage.textContent = 'You Win!';
+                winnerSelectionMessage.textContent = 'Rock beats Scissors';
+                winner = 'WinRockScissors';}
 
     } else if (userChoice == 'paper'){
         if (ComputerChoice == 'paper'){
+            winnerMessage.textContent = 'Its a Tie';
+            winnerSelectionMessage.textContent = 'Paper ties with Paper';
             winner = 'tie';
         } else if (ComputerChoice == 'scissors'){
+            winnerMessage.textContent = 'You lost!';
+            winnerSelectionMessage.textContent = 'Scissors beats Paper';
             winner = 'LoseScissorsPaper';
-        }else {winner = 'WinPaperRock';}
+        }else {
+            winnerMessage.textContent = 'You Win!';
+            winnerSelectionMessage.textContent = 'Paper beats Rock';
+            winner = 'WinRockScissors';}
 
     } else if (userChoice == 'scissors'){
         if (ComputerChoice == 'scissors'){
+            winnerMessage.textContent = 'Its a Tie';
+            winnerSelectionMessage.textContent = 'Scissors ties with Scissors';
             winner = 'tie';
         } else if (ComputerChoice == 'rock'){
+            winnerMessage.textContent = 'You lost!';
+            winnerSelectionMessage.textContent = 'Rock beats Scissors';
             winner = 'LoseRockScissors';
-        } else {winner = 'WinScissorsPaper';}
+        }else {
+            winnerMessage.textContent = 'You Win!';
+            winnerSelectionMessage.textContent = 'Scissors beats Paper';
+            winner = 'WinRockScissors';}
     }
     return winner;
+}
+
+function game(userChoice) {
+    let result = '';
+
+    let winner = playRound(userChoice);
+    switch (winner){
+        case 'WinScissorsPaper':
+            userScore += 1;
+            userScoreText.textContent = userScore;
+            break;
+        case 'LosePaperRock':
+            computerScore += 1;
+            computerScoreText.textContent = computerScore;
+            break;
+        case 'WinRockScissors':
+            userScore += 1;
+            userScoreText.textContent = userScore;
+            break;
+        case 'LoseScissorsPaper':
+            computerScore += 1;
+            computerScoreText.textContent = computerScore;
+            break;
+        case 'WinPaperRock':
+            userScore += 1;
+            userScoreText.textContent = userScore;
+            break;
+        case 'LoseRockScissors':
+            computerScore += 1;
+            computerScoreText.textContent = computerScore;
+            break;
+        case 'tie':
+            break;
     }
 
-function game() {
-    let computerScore = 0;
-    let userScore = 0;
-    let ties = 0;
-    for (let i = 1 ; i <= 5 ; i++){
-        let winner = playRound();
-        switch (winner){
-            case 'WinScissorsPaper':
-                alert('You Win! Scissors beats Paper');
-                userScore += 1;
-                break;
-            case 'LosePaperRock':
-                alert('You lose! Paper beats Rock');
-                computerScore += 1;
-                break;
-            case 'WinRockScissors':
-                alert('You Win! Rock beats Scissors');
-                userScore += 1;
-                break;
-            case 'LoseScissorsPaper':
-                alert('You lose! Scissors beats Paper');
-                computerScore += 1;
-                break;
-            case 'WinPaperRock':
-                alert('You Win! Paper beats Rock');
-                userScore += 1;
-                break;
-            case 'LoseRockScissors':
-                alert('You lose! Rock beats Scissors');
-                computerScore += 1;
-                break;
-            case 'tie':
-                alert('Its a Tie!');
-                ties += 1;
-                break;
-        }
-    }
+    if ( computerScore==5 | userScore==5){
+        if (userScore>computerScore){
+            result= (alert(`You Win!!`));
+            userScore = 0;
+            computerScore = 0;
 
-    if (userScore>computerScore){
-        let result= (alert(`You Win!!\nThe score:\nYou: ${userScore
-        } The Computer: ${computerScore} Ties: ${ties}`));
-    } else if (userScore<computerScore) {
-        let result= (alert(`You Lose!!\nThe score:\nYou: ${userScore
-        } The Computer: ${computerScore} Ties: ${ties}`));
-    } else {result= (alert(`Its a Tie!!\nThe score:\nYou: ${userScore
-    } The Computer: ${computerScore} Ties: ${ties}`));}
-    return(alert(result));
+        } else if (userScore<computerScore) {
+            result= (alert(`You Lose!!`));
+            userScore = 0;
+            computerScore = 0;
+
+        } else {result= (alert(`Its a Tie!!`));}
+        setDefaultUi()
     }
+}
+
+

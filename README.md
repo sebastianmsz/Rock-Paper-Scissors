@@ -1,6 +1,6 @@
 # Rock-Paper-Scissors Game - Odin JavaScript Practice Project 🎮
 
-Welcome to the Rock-Paper-Scissors game project! This practice project is part of [The Odin Project curriculum](https://www.theodinproject.com), and it serves as a hands-on practice to solidify my understanding of JavaScript logic and interaction with web development technologies, as well as applying technologies like Git, HTML, and CSS. **Notice:** This and the other projects from the [Odin Foundations Course](https://www.theodinproject.com/paths/foundations/courses/foundations) won't be updated. This is to keep a record of my learning progress and document how my work was when I started in web development.
+Welcome to the Rock-Paper-Scissors game project! This practice project is part of [The Odin Project curriculum](https://www.theodinproject.com), and it serves as a hands-on practice to solidify my understanding of JavaScript logic and interaction with web development technologies, as well as applying technologies like Git, HTML, and CSS. **Notice:** This and the other projects from the [Odin Foundations Course](https://www.theodinproject.com/paths/foundations/courses/foundations) won't be updated or enhanced after completed. This is to keep a record of my learning progress.
 
 ## Project Description
 
