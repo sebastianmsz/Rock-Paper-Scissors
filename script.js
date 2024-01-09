@@ -30,8 +30,8 @@ function setDefaultUi() {
     ties = 0;
     userScoreText.textContent = userScore;
     computerScoreText.textContent = computerScore;
-    winnerMessage.textContent = 'First to score 5 points wins the game';
-    winnerSelectionMessage.textContent = 'Choose your weapon';
+    winnerMessage.textContent = 'Choose your weapon';
+    winnerSelectionMessage.textContent = 'First to score 5 points wins the game';
     userSelectionImg.src = `img/question.png`;
     computerSelectionImg.src = `img/question.png`;
 }
@@ -149,5 +149,3 @@ function game(userChoice) {
         setDefaultUi()
     }
 }
-
-
